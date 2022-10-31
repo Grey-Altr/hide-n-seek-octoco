@@ -2,6 +2,7 @@
 const shedButton = document.getElementById('shed-button');
 const treeButton = document.getElementById('tree-button');
 const boulderButton = document.getElementById('boulder-button');
+const tryAgainButton = document.getElementById('try-again-button');
 const resetButton = document.getElementById('reset-button');
 
 const shedContainer = document.getElementById('shed-container');
@@ -22,29 +23,55 @@ shedButton.addEventListener('click', () => {
     const hidingSpot = Math.floor(Math.random() * 3);
     const answer = hidingPlaces[hidingSpot];
     handleGuess(answer, 'shed');
+    disableButtons();
+    console.log(disableButtons);
 });
 
 treeButton.addEventListener('click', () => {
     const hidingSpot = Math.floor(Math.random() * 3);
     const answer = hidingPlaces[hidingSpot];
     handleGuess(answer, 'tree');
+    disableButtons();
 });
 
 boulderButton.addEventListener('click', () => {
     const hidingSpot = Math.floor(Math.random() * 3);
     const answer = hidingPlaces[hidingSpot];
     handleGuess(answer, 'boulder');
+    disableButtons();
+});
+
+tryAgainButton.addEventListener('click', () => {
+    shedContainer.classList.remove('face');
+    treeContainer.classList.remove('face');
+    boulderContainer.classList.remove('face');
+    enableButtons();
 });
 
 resetButton.addEventListener('click', () => {
     window.location.reload();
 });
 
+//disable selection buttons function
+function disableButtons() {
+    shedButton.disable = true;
+    treeButton.disable = true;
+    boulderButton.disable = true;
+}
+
+//enable selection buttons function
+function enableButtons() {
+    shedButton.disable = false;
+    treeButton.disable = false;
+    boulderButton.disable = false;
+}
+
 function handleGuess(correctSpot, userGuess) {
     // reset the styles
-    shedContainer.classList.remove('face');
-    treeContainer.classList.remove('face');
-    boulderContainer.classList.remove('face');
+    // shedContainer.classList.remove('face');
+    // treeContainer.classList.remove('face');
+    // boulderContainer.classList.remove('face');
+
     // then increment the guesses
     totalGuesses++;
     totalEl.textContent = totalGuesses;
