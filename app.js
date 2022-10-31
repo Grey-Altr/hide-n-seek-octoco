@@ -41,6 +41,8 @@ function handleGuess(correctSpot, userGuess) {
     treeButton.classList.remove('face');
     boulderButton.classList.remove('face');
     // then increment the guesses
+    totalGuesses++;
+    totalEl.textContent = totalGuesses;
     // then grab the appropriate container element for the correct guess from the DOM
     // then add the face class to that element so that the face shows up
     // then if the user guess is correct, increment the correct guesses
